@@ -21,7 +21,7 @@ Download the [latest release](https://github.com/agmscode/agms_php_lite/releases
 
 Simple usage looks like:
 
-    Agms::setUsername('avantdemo');
+    Agms::setUsername('your username');
     Agms::setPassword('your password');
     $params = array(
         'TransactionType' => 'sale'
@@ -30,7 +30,7 @@ Simple usage looks like:
         'CVV' => 123,
         'Amount' => '20'
     );
-    $response = Agms::sale($params);
+    $response = Agms::process($params);
     echo $response;
 
 ## Documentation
