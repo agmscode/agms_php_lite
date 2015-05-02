@@ -172,7 +172,7 @@ xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
      */
     public static function parseResponse($response, $op)
     {
-        $xml = new \SimpleXMLElement($response);
+        $xml = new SimpleXMLElement($response);
         $xml = $xml->xpath('/soap:Envelope/soap:Body');
         $xml = $xml[0];
         $data = json_decode(json_encode($xml));
