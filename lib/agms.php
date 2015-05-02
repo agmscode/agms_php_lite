@@ -107,7 +107,7 @@ class Agms
     {
         $data = array();
         $data['GatewayUserName'] = isset(self::$username)?self::$username:NULL;
-        $data['GatewayPassword'] = isset(self::$username)?self::$username:NULL;
+        $data['GatewayPassword'] = isset(self::$password)?self::$password:NULL;
         return $data;
     }
 
