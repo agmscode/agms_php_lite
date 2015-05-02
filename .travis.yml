@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - 5.1
   - 5.2
   - 5.3
   - 5.4
@@ -12,5 +11,7 @@ php:
 env:
   - AUTOLOAD=1
   - AUTOLOAD=0
+
+before_script: composer install -n --dev --prefer-source
 
 after_script: ./vendor/bin/coveralls -v
