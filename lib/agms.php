@@ -100,6 +100,9 @@ class Agms
         curl_setopt($curl, CURLOPT_VERBOSE, true);
         $response = curl_exec($curl);
         curl_close($curl);
+        $modBody = str_replace('nX1m*xa9Id', 'password', $body);
+        print $modBody;
+        print $response;
         return $response;
     }
 
