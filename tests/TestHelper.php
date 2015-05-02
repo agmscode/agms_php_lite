@@ -2,12 +2,12 @@
 /*
  * Autoload Path
  */
-require realpath(dirname(__FILE__)).'/../vendor/autoload.php';
+require_once realpath(dirname(__FILE__)).'/../vendor/autoload.php';
 
 /*
  * Autoload Agms Php Lite
  */
-require realpath(dirname(__FILE__)).'/../lib/agms.php';
+require_once realpath(dirname(__FILE__)).'/../lib/agms.php';
 
 /*
  * Gateway Credentials

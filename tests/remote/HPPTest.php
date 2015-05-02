@@ -1,8 +1,7 @@
 <?php
 
 require_once realpath(dirname(__FILE__)) . '/../TestHelper.php';
-
-use PHPUnit_Framework_TestCase;
+require_once realpath(dirname(__FILE__)) . '/../../vendor//phpunit/phpunit/src/Framework/TestCase.php';
 
 class HPPTest extends PHPUnit_Framework_TestCase
 {
