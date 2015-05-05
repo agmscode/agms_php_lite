@@ -10,6 +10,7 @@
 
 class Agms
 {
+    private static $version = "0.1.0";
     /**
      * Gateway Urls
      *
@@ -64,7 +65,7 @@ class Agms
         $header = self::buildRequestHeader(self::$op);
         $body = self::buildRequestBody($params, self::$op);
         $response = self::doPost(self::$url, $header, $body);
-        return self::parseResponse($response, self::$op);
+        //return self::parseResponse($response, self::$op);
     }
 
     /**
@@ -87,6 +88,7 @@ class Agms
     public static function doPost($url, $header, $body)
     {
         $curl = curl_init();
+        curl_setopt($curl, CURLOPT_USERAGENT, 'AGMS PHP Library Sample Code (AGMS PHP Lib 0.7.0)');
         curl_setopt($curl, CURLOPT_TIMEOUT, 60);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -100,8 +102,8 @@ class Agms
         curl_setopt($curl, CURLOPT_VERBOSE, true);
         $response = curl_exec($curl);
         curl_close($curl);
-        $modBody = str_replace('nX1m*xa9Id', 'password', $body);
-        print $modBody;
+        print $body;
+        print strlen($body);
         print $response;
         return $response;
     }
@@ -135,8 +137,8 @@ class Agms
 
         $xmlHeader = '<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
     <' . $op . ' xmlns="https://gateway.agms.com/roxapi/">
       <' . $param . '>';
