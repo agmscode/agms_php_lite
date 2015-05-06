@@ -21,7 +21,6 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CVV' => '123'
         );
         $result = Agms::process($params);
-        print $result;
         $this->assertTrue(is_array($result));
     }
 
@@ -44,7 +43,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'TransactionType' => 'sale',
             'Amount' => '20.00',
             'CCNumber' => '4111111111111111',
-            'CCExpDate' => '1220'
+            'CCExpDate' => '1214'
         );
         $result = Agms::process($params);
         $this->assertEquals(2, $result['STATUS_CODE']);
@@ -54,7 +53,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
     public function testSuccessfulAuthorize()
     {
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'auth',
             'Amount' => '20.00',
             'CCNumber' => '4111111111111111',
             'CCExpDate' => '1220'
@@ -67,10 +66,10 @@ class TransactionTest extends PHPUnit_Framework_TestCase
     public function testFailedAuthorize()
     {
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'auth',
             'Amount' => '20.00',
             'CCNumber' => '4111111111111111',
-            'CCExpDate' => '1220'
+            'CCExpDate' => '1214'
         );
         $result = Agms::process($params);
         $this->assertEquals(2, $result['STATUS_CODE']);
@@ -80,7 +79,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
     public function testSuccessfulCapture()
     {
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'auth',
             'Amount' => '20.00',
             'CCNumber' => '4111111111111111',
             'CCExpDate' => '1220'
@@ -92,7 +91,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $transaction_id = $result['TRANS_ID'];
 
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'capture',
             'Amount' => '20.00',
             'TransactionID' => $transaction_id
         );
@@ -105,7 +104,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
     public function testPartialCapture()
     {
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'auth',
             'Amount' => '20.00',
             'CCNumber' => '4111111111111111',
             'CCExpDate' => '1220'
@@ -118,7 +117,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $transaction_id = $result['TRANS_ID'];
 
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'capture',
             'Amount' => '20.00',
             'TransactionID' => $transaction_id
         );
@@ -131,7 +130,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
     public function testFailedCapture()
     {
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'auth',
             'Amount' => '20.00',
             'CCNumber' => '4111111111111111',
             'CCExpDate' => '1220'
@@ -141,7 +140,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Approved", $result['STATUS_MSG']);
 
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'capture',
             'Amount' => '20.00',
             'TransactionID' => '123'
         );
@@ -172,7 +171,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $transaction_id = $result['TRANS_ID'];
 
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'refund',
             'Amount' => '20.00',
             'TransactionID' => $transaction_id
         );
@@ -197,7 +196,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $transaction_id = $result['TRANS_ID'];
 
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'refund',
             'Amount' => '20.00',
             'TransactionID' => $transaction_id
         );
@@ -220,7 +219,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result['STATUS_MSG'], "Approved");
 
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'refund',
             'Amount' => '20.00',
             'TransactionID' => '123'
         );
@@ -250,7 +249,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $transaction_id = $result['TRANS_ID'];
 
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'void',
             'Amount' => '20.00',
             'TransactionID' => $transaction_id
         );
@@ -274,7 +273,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result['STATUS_MSG'], "Approved");
 
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'void',
             'Amount' => '20.00',
             'TransactionID' => '123'
         );
@@ -292,7 +291,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
     public function testSuccessfulVerify()
     {
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'auth',
             'Amount' => '20.00',
             'CCNumber' => '4111111111111111',
             'CCExpDate' => '1220',
@@ -304,7 +303,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $transaction_id = $result['TRANS_ID'];
 
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'void',
             'Amount' => '20.00',
             'TransactionID' => $transaction_id
         );
@@ -318,7 +317,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
     public function testFailedVerify()
     {
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'auth',
             'Amount' => '20.00',
             'CCNumber' => '4111111111111111',
             'CCExpDate' => '1220'
@@ -328,7 +327,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result['STATUS_MSG'], "Approved");
 
         $params = array(
-            'TransactionType' => 'sale',
+            'TransactionType' => 'void',
             'Amount' => '20.00',
             'TransactionID' => '123'
         );
