@@ -10,6 +10,9 @@
 
 class Agms
 {
+    /*
+     * Library Version
+     */
     private static $version = "0.1.0";
     /**
      * Gateway Urls
@@ -30,6 +33,10 @@ class Agms
     private static $username;
     private static $password;
 
+    /*
+     * Verbose
+     */
+    private static $verbose = false;
     /**
      * Set the gateway username variable
      * @param $username
@@ -50,7 +57,15 @@ class Agms
         self::$password = $password;
     }
 
-
+    /**
+     * Set the gateway verbose variable
+     * @param $password
+     * @return NULL
+     */
+    public static function setVerbose($verbose = false)
+    {
+        self::$verbose = $verbose;
+    }
     /**
      * Process transaction request on gateway
      * @param $params
@@ -98,7 +113,9 @@ class Agms
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_FAILONERROR, false);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
-        curl_setopt($curl, CURLOPT_VERBOSE, true);
+        if (self::$verbose) {
+            curl_setopt($curl, CURLOPT_VERBOSE, true);
+        }
         $response = curl_exec($curl);
         curl_close($curl);
         return $response;
@@ -163,7 +180,7 @@ class Agms
             'Accept: application/xml',
             'Content-Type: text/xml; charset=utf-8',
             'SOAPAction: https://gateway.agms.com/roxapi/' . $op,
-            'User-Agent: AGMS PHP Library Sample Code (AGMS PHP Lib 0.7.0)',
+            'User-Agent: AGMS PHP Library Lite (' . self::$version . ')',
             'X-ApiVersion: 3'
         );
     }

@@ -14,3 +14,5 @@ require_once realpath(dirname(__FILE__)).'/../lib/agms.php';
  */
 Agms::setUsername('agmsdevdemo');
 Agms::setPassword('nX1m*xa9Id');
+
+Agms::setVerbose(false);

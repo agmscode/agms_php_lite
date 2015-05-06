@@ -34,8 +34,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals(1, $result['response_code']);
-        $this->assertEquals("Approved", $result['response_message']);
+        $this->assertEquals(1, $result['STATUS_CODE']);
+        $this->assertEquals("Approved", $result['STATUS_MSG']);
     }
 
     public function testFailedSale()
@@ -47,8 +47,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals(2, $result['response_code']);
-        $this->assertEquals("Declined", $result['response_message']);
+        $this->assertEquals(2, $result['STATUS_CODE']);
+        $this->assertEquals("Declined", $result['STATUS_MSG']);
     }
 
     public function testSuccessfulAuthorize()
@@ -60,8 +60,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals(1, $result['response_code']);
-        $this->assertEquals("Approved", $result['response_message']);
+        $this->assertEquals(1, $result['STATUS_CODE']);
+        $this->assertEquals("Approved", $result['STATUS_MSG']);
     }
 
     public function testFailedAuthorize()
@@ -73,8 +73,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals(2, $result['response_code']);
-        $this->assertEquals("Declined", $result['response_message']);
+        $this->assertEquals(2, $result['STATUS_CODE']);
+        $this->assertEquals("Declined", $result['STATUS_MSG']);
     }
 
     public function testSuccessfulCapture()
@@ -86,8 +86,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals(1, $result['response_code']);
-        $this->assertEquals("Approved", $result['response_message']);
+        $this->assertEquals(1, $result['STATUS_CODE']);
+        $this->assertEquals("Approved", $result['STATUS_MSG']);
 
         $transaction_id = $result['transaction_id'];
 
@@ -98,8 +98,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         );
 
         $result = Agms::process($params);
-        $this->assertEquals(1, $result['response_code']);
-        $this->assertEquals("Capture successful: Approved", $result['response_message']);
+        $this->assertEquals(1, $result['STATUS_CODE']);
+        $this->assertEquals("Capture successful: Approved", $result['STATUS_MSG']);
     }
 
     public function testPartialCapture()
@@ -111,8 +111,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals(1, $result['response_code']);
-        $this->assertEquals("Approved", $result['response_message']);
+        $this->assertEquals(1, $result['STATUS_CODE']);
+        $this->assertEquals("Approved", $result['STATUS_MSG']);
 
 
         $transaction_id = $result['transaction_id'];
@@ -124,8 +124,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         );
 
         $result = Agms::process($params);
-        $this->assertEquals(1, $result['response_code']);
-        $this->assertEquals("Capture successful: Approved", $result['response_message']);
+        $this->assertEquals(1, $result['STATUS_CODE']);
+        $this->assertEquals("Capture successful: Approved", $result['STATUS_MSG']);
     }
 
     public function testFailedCapture()
@@ -137,8 +137,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals(1, $result['response_code']);
-        $this->assertEquals("Approved", $result['response_message']);
+        $this->assertEquals(1, $result['STATUS_CODE']);
+        $this->assertEquals("Approved", $result['STATUS_MSG']);
 
         $params = array(
             'TransactionType' => 'sale',
@@ -166,8 +166,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "Approved");
 
         $transaction_id = $result['transaction_id'];
 
@@ -178,8 +178,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         );
 
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "refund successful: Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "refund successful: Approved");
     }
 
     public function testPartialRefund()
@@ -191,8 +191,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "Approved");
 
         $transaction_id = $result['transaction_id'];
 
@@ -203,8 +203,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         );
 
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "refund successful: Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "refund successful: Approved");
     }
 
     public function testFailedRefund()
@@ -216,8 +216,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "Approved");
 
         $params = array(
             'TransactionType' => 'sale',
@@ -244,8 +244,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "Approved");
 
         $transaction_id = $result['transaction_id'];
 
@@ -256,8 +256,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         );
 
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "void successful: Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "void successful: Approved");
     }
 
 
@@ -270,8 +270,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "Approved");
 
         $params = array(
             'TransactionType' => 'sale',
@@ -298,8 +298,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220',
         );
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "Approved");
 
         $transaction_id = $result['transaction_id'];
 
@@ -310,8 +310,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         );
 
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "void successful: Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "void successful: Approved");
     }
 
 
@@ -324,8 +324,8 @@ class TransactionTest extends PHPUnit_Framework_TestCase
             'CCExpDate' => '1220'
         );
         $result = Agms::process($params);
-        $this->assertEquals($result['response_code'], 1);
-        $this->assertEquals($result['response_message'], "Approved");
+        $this->assertEquals($result['STATUS_CODE'], 1);
+        $this->assertEquals($result['STATUS_MSG'], "Approved");
 
         $params = array(
             'TransactionType' => 'sale',
