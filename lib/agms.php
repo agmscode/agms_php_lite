@@ -61,11 +61,12 @@ class Agms
         self::$url = self::$transactionUrl;
         self::$op = 'ProcessTransaction';
         $data = self::getGatewayCredentials();
+        $params = array_merge($params, array('PaymentType' => 'creditcard'));
         $params = array_merge($data, $params);
         $header = self::buildRequestHeader(self::$op);
         $body = self::buildRequestBody($params, self::$op);
         $response = self::doPost(self::$url, $header, $body);
-        //return self::parseResponse($response, self::$op);
+        return self::parseResponse($response, self::$op);
     }
 
     /**
@@ -88,11 +89,9 @@ class Agms
     public static function doPost($url, $header, $body)
     {
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_USERAGENT, 'AGMS PHP Library Sample Code (AGMS PHP Lib 0.7.0)');
         curl_setopt($curl, CURLOPT_TIMEOUT, 60);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_ENCODING, 'gzip');
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
@@ -102,9 +101,6 @@ class Agms
         curl_setopt($curl, CURLOPT_VERBOSE, true);
         $response = curl_exec($curl);
         curl_close($curl);
-        print $body;
-        print strlen($body);
-        print $response;
         return $response;
     }
 
@@ -164,9 +160,11 @@ class Agms
     public static function buildRequestHeader($op='ProcessTransaction')
     {
         return array(
-            "Accept: application/xml",
-            "Content-Type: text/xml; charset=utf-8",
-            "SOAPAction : https://gateway.agms.com/roxapi/" . $op
+            'Accept: application/xml',
+            'Content-Type: text/xml; charset=utf-8',
+            'SOAPAction: https://gateway.agms.com/roxapi/' . $op,
+            'User-Agent: AGMS PHP Library Sample Code (AGMS PHP Lib 0.7.0)',
+            'X-ApiVersion: 3'
         );
     }
 

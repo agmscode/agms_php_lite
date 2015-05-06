@@ -14,9 +14,11 @@ class TransactionTest extends PHPUnit_Framework_TestCase
     {
         $params = array(
             'TransactionType' => 'sale',
+            'PaymentType' => 'creditcard',
             'Amount' => '20.00',
             'CCNumber' => '4111111111111111',
-            'CCExpDate' => '1220'
+            'CCExpDate' => '1220',
+            'CVV' => '123'
         );
         $result = Agms::process($params);
         print $result;
