@@ -89,7 +89,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $result['STATUS_CODE']);
         $this->assertEquals("Approved", $result['STATUS_MSG']);
 
-        $transaction_id = $result['transaction_id'];
+        $transaction_id = $result['TRANS_ID'];
 
         $params = array(
             'TransactionType' => 'sale',
@@ -115,7 +115,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Approved", $result['STATUS_MSG']);
 
 
-        $transaction_id = $result['transaction_id'];
+        $transaction_id = $result['TRANS_ID'];
 
         $params = array(
             'TransactionType' => 'sale',
@@ -169,7 +169,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result['STATUS_CODE'], 1);
         $this->assertEquals($result['STATUS_MSG'], "Approved");
 
-        $transaction_id = $result['transaction_id'];
+        $transaction_id = $result['TRANS_ID'];
 
         $params = array(
             'TransactionType' => 'sale',
@@ -194,7 +194,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result['STATUS_CODE'], 1);
         $this->assertEquals($result['STATUS_MSG'], "Approved");
 
-        $transaction_id = $result['transaction_id'];
+        $transaction_id = $result['TRANS_ID'];
 
         $params = array(
             'TransactionType' => 'sale',
@@ -247,7 +247,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result['STATUS_CODE'], 1);
         $this->assertEquals($result['STATUS_MSG'], "Approved");
 
-        $transaction_id = $result['transaction_id'];
+        $transaction_id = $result['TRANS_ID'];
 
         $params = array(
             'TransactionType' => 'sale',
@@ -301,7 +301,7 @@ class TransactionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result['STATUS_CODE'], 1);
         $this->assertEquals($result['STATUS_MSG'], "Approved");
 
-        $transaction_id = $result['transaction_id'];
+        $transaction_id = $result['TRANS_ID'];
 
         $params = array(
             'TransactionType' => 'sale',
