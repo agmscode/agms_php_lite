@@ -12,7 +12,7 @@ require_once realpath(dirname(__FILE__)).'/../lib/agms.php';
 /*
  * Gateway Credentials
  */
-Agms::setUsername('agmsdevdemo');
-Agms::setPassword('nX1m*xa9Id');
+Agms::setUsername('osdgithub');
+Agms::setPassword('Ks1m32aF@');
 
 Agms::setVerbose(false);
