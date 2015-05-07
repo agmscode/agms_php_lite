@@ -2,9 +2,10 @@
 Agms Php Lite Library
 
 [![Build Status](https://travis-ci.org/agmscode/agms_php_lite.svg?branch=master)](https://travis-ci.org/agmscode/agms_php_lite)
-[![Latest Stable Version](https://poser.pugx.org/agms/agms_php_lite/v/stable.svg)](https://packagist.org/packages/agms/agms_php_lite)
-[![Total Downloads](https://poser.pugx.org/agms/agms_php_lite/downloads.svg)](https://packagist.org/packages/agms/agms_php_lite)
-[![License](https://poser.pugx.org/agms/agms_php_lite/license.svg)](https://packagist.org/packages/agms/agms_php_lite)
+[![Latest Stable Version](https://poser.pugx.org/agmscode/agms_php_lite/v/stable)](https://packagist.org/packages/agmscode/agms_php_lite)
+[![Total Downloads](https://poser.pugx.org/agmscode/agms_php_lite/downloads)](https://packagist.org/packages/agmscode/agms_php_lite)
+[![Latest Unstable Version](https://poser.pugx.org/agmscode/agms_php_lite/v/unstable)](https://packagist.org/packages/agmscode/agms_php_lite)
+[![License](https://poser.pugx.org/agmscode/agms_php_lite/license)](https://packagist.org/packages/agmscode/agms_php_lite)
 [![Code Coverage](https://coveralls.io/repos/agms/agms_php_lite/badge.png?branch=master)](https://coveralls.io/r/agms/agms_php_lite?branch=master)
 
 ## Requirements
