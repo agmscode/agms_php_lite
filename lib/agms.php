@@ -20,7 +20,7 @@ class Agms
      */
     private static $transactionUrl = 'https://gateway.agms.com/roxapi/agms.asmx';
     private static $hostedPaymentUrl = 'https://gateway.agms.com/roxapi/AGMS_HostedPayment.asmx';
-
+    private static $safeUrl = 'https://gateway.agms.com/roxapi/AGMS_SAFE_API.asmx';
     /**
      * Gateway Variables
      */
@@ -101,6 +101,73 @@ class Agms
         return self::parseResponse($response, self::$op);
     }
 
+    /**
+     * Get Add Card Data to SAFE
+     * @param $params
+     * @return string
+     */
+    public static function addToSafe($params)
+    {
+        self::$url = self::$safeUrl;
+        self::$op = 'AddToSAFE';
+        $data = self::getGatewayCredentials();
+        $params = array_merge($data, $params);
+        $header = self::buildRequestHeader(self::$op);
+        $body = self::buildRequestBody($params, self::$op);
+        $response = self::doPost(self::$url, $header, $body);
+        return self::parseResponse($response, self::$op);
+    }
+
+    /**
+     * Get Delete Card Data from SAFE
+     * @param $params
+     * @return string
+     */
+    public static function deleteFromSafe($params)
+    {
+        self::$url = self::$safeUrl;
+        self::$op = 'DeleteFromSAFE';
+        $data = self::getGatewayCredentials();
+        $params = array_merge($data, $params);
+        $header = self::buildRequestHeader(self::$op);
+        $body = self::buildRequestBody($params, self::$op);
+        $response = self::doPost(self::$url, $header, $body);
+        return self::parseResponse($response, self::$op);
+    }
+
+    /**
+     * Get Query Card Data from SAFE
+     * @param $params
+     * @return string
+     */
+    public static function querySafe($params)
+    {
+        self::$url = self::$safeUrl;
+        self::$op = 'QuerySAFE';
+        $data = self::getGatewayCredentials();
+        $params = array_merge($data, $params);
+        $header = self::buildRequestHeader(self::$op);
+        $body = self::buildRequestBody($params, self::$op);
+        $response = self::doPost(self::$url, $header, $body);
+        return self::parseResponse($response, self::$op);
+    }
+
+    /**
+     * Get Update Card Data in SAFE
+     * @param $params
+     * @return string
+     */
+    public static function updateSafe($params)
+    {
+        self::$url = self::$safeUrl;
+        self::$op = 'UpdateSAFE';
+        $data = self::getGatewayCredentials();
+        $params = array_merge($data, $params);
+        $header = self::buildRequestHeader(self::$op);
+        $body = self::buildRequestBody($params, self::$op);
+        $response = self::doPost(self::$url, $header, $body);
+        return self::parseResponse($response, self::$op);
+    }
     public static function doPost($url, $header, $body)
     {
         $curl = curl_init();
@@ -145,6 +212,12 @@ class Agms
                 break;
             case 'ReturnHostedPaymentSetup':
                 $param = 'objparameters';
+                break;
+            case 'AddToSAFE':
+            case 'DeleteFromSAFE':
+            case 'QuerySAFE':
+            case 'UpdateSAFE':
+                $param = 'vParameter';
                 break;
         }
 
