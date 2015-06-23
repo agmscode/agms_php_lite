@@ -21,6 +21,7 @@ class Agms
     private static $transactionUrl = 'https://gateway.agms.com/roxapi/agms.asmx';
     private static $hostedPaymentUrl = 'https://gateway.agms.com/roxapi/AGMS_HostedPayment.asmx';
     private static $safeUrl = 'https://gateway.agms.com/roxapi/AGMS_SAFE_API.asmx';
+
     /**
      * Gateway Variables
      */
