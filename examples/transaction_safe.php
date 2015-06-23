@@ -36,6 +36,7 @@ $params = array(
     'SAFE_Action' => 'update_safe',
     'FirstName' => 'test first updated',
     'LastName' => 'test last updated',
+    'PaymentType' => 'creditcard',
 );
 
 $result = Agms::process($params);
