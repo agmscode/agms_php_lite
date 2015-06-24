@@ -6,7 +6,6 @@ Agms Php Lite Library
 [![Total Downloads](https://poser.pugx.org/agmscode/agms_php_lite/downloads)](https://packagist.org/packages/agmscode/agms_php_lite)
 [![Latest Unstable Version](https://poser.pugx.org/agmscode/agms_php_lite/v/unstable)](https://packagist.org/packages/agmscode/agms_php_lite)
 [![License](https://poser.pugx.org/agmscode/agms_php_lite/license)](https://packagist.org/packages/agmscode/agms_php_lite)
-[![Code Coverage](https://coveralls.io/repos/agms/agms_php_lite/badge.png?branch=master)](https://coveralls.io/r/agms/agms_php_lite?branch=master)
 
 ## Requirements
 
