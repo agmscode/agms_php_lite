@@ -4,7 +4,7 @@
  *
  * @package     agms_php_lite
  * @class 		Agms
- * @version		0.1.0
+ * @version		0.2.0
  * @author      Maanas Royy
  */
 
@@ -13,7 +13,7 @@ class Agms
     /*
      * Library Version
      */
-    private static $version = "0.1.0";
+    private static $version = "0.2.0";
     /**
      * Gateway Urls
      *
