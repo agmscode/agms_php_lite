@@ -35,8 +35,8 @@ class SAFETest extends PHPUnit_Framework_TestCase
 
         );
         $result = Agms::addToSafe($params);
-        $this->assertEquals(10, $result['STATUS_CODE']);
-        $this->assertEquals("Add to safe failed: InValid information", $result['STATUS_MSG']);
+        $this->assertEquals(3, $result['STATUS_CODE']);
+        $this->assertEquals("SAFE Record failed to add successfully.  No transaction processed. Adding a SAFE record of type 'creditcard' requires a CCExpDate|", $result['STATUS_MSG']);
     }
 
 
@@ -96,8 +96,8 @@ class SAFETest extends PHPUnit_Framework_TestCase
         );
 
         $result = Agms::updateSafe($params);
-        $this->assertEquals(10, $result['STATUS_CODE']);
-        $this->assertEquals("Update safe failed: InValid information", $result['STATUS_MSG']);
+        $this->assertEquals(3, $result['STATUS_CODE']);
+        $this->assertEquals("SAFE Record failed to update successfully.  No transaction processed. ", $result['STATUS_MSG']);
     }
 
     public function testSuccessfulSafeDelete()

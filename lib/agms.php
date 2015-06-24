@@ -21,7 +21,6 @@ class Agms
     private static $transactionUrl = 'https://gateway.agms.com/roxapi/agms.asmx';
     private static $hostedPaymentUrl = 'https://gateway.agms.com/roxapi/AGMS_HostedPayment.asmx';
     private static $safeUrl = 'https://gateway.agms.com/roxapi/AGMS_SAFE_API.asmx';
-
     /**
      * Gateway Variables
      */
@@ -109,8 +108,8 @@ class Agms
      */
     public static function addToSafe($params)
     {
-        self::$url = self::$safeUrl;
-        self::$op = 'AddToSAFE';
+        self::$url = self::$transactionUrl;
+        self::$op = 'ProcessTransaction';
         $data = self::getGatewayCredentials();
         $params = array_merge($data, $params);
         $header = self::buildRequestHeader(self::$op);
@@ -126,8 +125,8 @@ class Agms
      */
     public static function deleteFromSafe($params)
     {
-        self::$url = self::$safeUrl;
-        self::$op = 'DeleteFromSAFE';
+        self::$url = self::$transactionUrl;
+        self::$op = 'ProcessTransaction';
         $data = self::getGatewayCredentials();
         $params = array_merge($data, $params);
         $header = self::buildRequestHeader(self::$op);
@@ -160,8 +159,8 @@ class Agms
      */
     public static function updateSafe($params)
     {
-        self::$url = self::$safeUrl;
-        self::$op = 'UpdateSAFE';
+        self::$url = self::$transactionUrl;
+        self::$op = 'ProcessTransaction';
         $data = self::getGatewayCredentials();
         $params = array_merge($data, $params);
         $header = self::buildRequestHeader(self::$op);
